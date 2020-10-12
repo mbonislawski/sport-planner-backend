@@ -9,7 +9,7 @@ export class Goal {
     @Column()
     dateStart: Date;
 
-    @Column()
+    @Column({ default: null })
     dateEnd: Date;
 
     @Column({ type: "float", default: null })
