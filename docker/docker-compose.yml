@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  mysql:
+    image: mysql:5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sport-planner
+    ports:
+      - "12345:3306"
