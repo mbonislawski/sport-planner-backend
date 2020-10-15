@@ -24,6 +24,18 @@ export class PlansService {
         private exerciseRepository: Repository<Exercise>,
     ) {}
 
+    findAllPlans(): Promise<Plan[]> {
+        return this.plansRepository.find();
+    }
+
+    findPlan(planId: string): Promise<Plan> {
+        return this.plansRepository.findOne(planId);
+    }
+
+    async findPlanExercises(planId: string): Promise<PlanExercise[]> {
+        return this.planExerciseRepository.find({where: {plan: planId}, relations: ['exercise']})
+    }
+
     async createPlan(createPlanDto: CreatePlanDto): Promise<Plan> {
         const newPlan = new Plan();
         
