@@ -30,7 +30,7 @@ export class PlansController {
     }
 
     @Put(':id')
-    addTrainer(@Param('id') id: string, @Body() createPlanExerciseDto: CreatePlanExerciseDto): Promise<PlanExercise> {
+    createPlanExercise(@Param('id') id: string, @Body() createPlanExerciseDto: CreatePlanExerciseDto): Promise<PlanExercise> {
       return this.plansService.createPlanExercise(id, createPlanExerciseDto);
     }
 }
