@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { Plan } from '../entities/plan.entity'
+import { Plan } from './entity/plan.entity'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePlanDto } from './dto/create-plan.dto';
-import { User } from '../entities/user.entity';
+import { User } from '../users/entity/user.entity';
 import { CreatePlanExerciseDto } from './dto/create-plan-exercise.dto'
-import { PlanExercise } from '../entities/plan-exercise.entity'
-import { Exercise } from '../entities/exercise.entity'
+import { PlanExercise } from './entity/plan-exercise.entity'
+import { Exercise } from '../exercises/entity/exercise.entity'
 
 @Injectable()
 export class PlansService {

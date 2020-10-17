@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ExercisesService } from './exercises.service';
 import { CreateExerciseDto } from './dto/create-exercise.dto'
-import { Exercise } from '../entities/exercise.entity'
+import { Exercise } from './entity/exercise.entity'
 
 @Controller('exercises')
 export class ExercisesController {

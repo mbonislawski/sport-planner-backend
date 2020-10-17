@@ -7,7 +7,7 @@
     "database": "sport-planner",
     "synchronize": true,
     "entities": [
-        "src/entities/**/*.ts"
+        "src/**/entity/*.ts"
      ],
     "migrations": [
         "src/migration/**/*.ts"

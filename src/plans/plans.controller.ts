@@ -1,9 +1,9 @@
 import { Body, Controller, Post, Put, Param, Get } from '@nestjs/common';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { PlansService } from './plans.service'
-import { Plan } from '../entities/plan.entity'
+import { Plan } from './entity/plan.entity'
 import { CreatePlanExerciseDto } from '../plans/dto/create-plan-exercise.dto';
-import { PlanExercise } from '../entities/plan-exercise.entity';
+import { PlanExercise } from './entity/plan-exercise.entity';
 
 @Controller('plans')
 export class PlansController {

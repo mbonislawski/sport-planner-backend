@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { MeasurementsService } from './measurements.service';
 import { CreateMeasurementDto } from './dto/create-measurement.dto';
-import { Measurement } from '../entities/measurement.entity';
+import { Measurement } from './entity/measurement.entity';
 
 @Controller('measurements')
 export class MeasurementsController {

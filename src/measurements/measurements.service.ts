@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Measurement } from '../entities/measurement.entity';
+import { Measurement } from './entity/measurement.entity';
 import { CreateMeasurementDto } from './dto/create-measurement.dto';
-import { User } from '../entities/user.entity';
+import { User } from '../users/entity/user.entity';
 
 @Injectable()
 export class MeasurementsService {
