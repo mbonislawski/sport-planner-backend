@@ -29,7 +29,7 @@ export class UsersController {
   }
 
   // trainer methods
-  @Put(':id')
+  @Put('add-trainer/:id')
   addTrainer(@Param('id') id: string, @Body() addTrainerDto: AddTrainerDto): Promise<User> {
     return this.usersService.addTrainer(id, addTrainerDto);
   }

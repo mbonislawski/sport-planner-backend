@@ -4,9 +4,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { User } from '../users/entity/user.entity';
-import { CreatePlanExerciseDto } from './dto/create-plan-exercise.dto'
-import { PlanExercise } from './entity/plan-exercise.entity'
-import { Exercise } from '../exercises/entity/exercise.entity'
+import { Exercise } from '../exercises/entity/exercise.entity';
+
+// plan-exercise
+import { PlanExercise } from './entity/plan-exercise.entity';
+import { CreatePlanExerciseDto } from './dto/create-plan-exercise.dto';
+
+// plan-session
+import { PlanSession } from './entity/plan-session.entity';
+import { CreatePlanSessionDto } from './dto/create-plan-session.dto';
 
 @Injectable()
 export class PlansService {
@@ -17,11 +23,14 @@ export class PlansService {
         @InjectRepository(User)
         private readonly usersRepository: Repository<User>,
 
+        @InjectRepository(Exercise)
+        private exerciseRepository: Repository<Exercise>,
+
         @InjectRepository(PlanExercise)
         private planExerciseRepository: Repository<PlanExercise>,
 
-        @InjectRepository(Exercise)
-        private exerciseRepository: Repository<Exercise>,
+        @InjectRepository(PlanSession)
+        private planSessionRepository: Repository<PlanSession>,
     ) {}
 
     findAllPlans(): Promise<Plan[]> {
@@ -46,12 +55,21 @@ export class PlansService {
         return this.plansRepository.save(newPlan);
     }
 
-    async createPlanExercise (planId: string, createPlanExerciseDto: CreatePlanExerciseDto): Promise<PlanExercise> {
+    async createPlanExercise(planId: string, createPlanExerciseDto: CreatePlanExerciseDto): Promise<PlanExercise> {
         const newPlanExercise = new PlanExercise();
 
         newPlanExercise.plan = await this.plansRepository.findOne(planId);
         newPlanExercise.exercise = await this.exerciseRepository.findOne(createPlanExerciseDto.exerciseId);
 
         return this.planExerciseRepository.save(newPlanExercise);
+    }
+
+    async createPlanSession(planId: string, createPlanSessionDto: CreatePlanSessionDto): Promise<PlanSession> {
+        const newPlanSession = new PlanSession();
+
+        newPlanSession.plan = await this.plansRepository.findOne(planId);
+        newPlanSession.date = createPlanSessionDto.date ? createPlanSessionDto.date : new Date();
+        
+        return this.planSessionRepository.save(newPlanSession);
     }
 }
